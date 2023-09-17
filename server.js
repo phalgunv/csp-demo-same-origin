@@ -4,14 +4,14 @@ const path = require("path");
 const app = express();
 
 app.use(function (req, res, next) {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css; frame-src self",
-    "X-Frame-options",
-    "deny"
-  );
+  res.setHeader("Content-Security-Policy", "frame-ancestors self");
   next();
 });
+
+// app.use(function (req, res, next) {
+//   res.setHeader("X-Frame-Options", "sameorigin");
+//   next();
+// });
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
