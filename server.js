@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 
 app.use(function (req, res, next) {
-  res.setHeader("Content-Security-Policy", "frame-ancestors self");
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
   next();
 });
 
